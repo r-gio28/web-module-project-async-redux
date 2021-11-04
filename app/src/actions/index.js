@@ -2,17 +2,15 @@ import axios from 'axios';
 
 export const getMeme = () => {
     return(dispatch) => {
-        dispatch({
-            type: FETCH_START
-        });
+        dispatch(fetchStart());
 
         axios.get('https://api.imgflip.com/get_memes')
         .then( resp => {
-            dispatch({type: FETCH_SUCCESS, payload: resp.data.data.memes});
+            dispatch(fetchSuccess(resp.data.data));
         })
         .catch( err => {
-            dispatch({type: FETCH_ERROR, payload: err});
-        })
+            dispatch(fetchError(err));
+        });
     }
 }
 

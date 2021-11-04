@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import {fetchStart, fetchSuccess, fetchError, getMeme} from '../actions';
+import {fetchError, getMeme} from '../actions';
 
 
-const Meme = ({getMeme, isFetching, error, dispatch}) => {
+const Meme = ({meme, isFetching, error, dispatch}) => {
 
 useEffect((resp) => {
     dispatch(getMeme(resp));
